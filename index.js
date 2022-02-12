@@ -20,8 +20,8 @@ let mintNumber = 1;
 //SEARCH BUTTON -- 1. Set correct url path, 2.increment mintNumber, 3.Set all local storage on button click because
 button.addEventListener('click', handleButton)
 function handleButton() {
-    mintNumber += 1
     counterText.textContent = mintNumber;
+    mintNumber++
     localStorage.setItem('mintNumber', JSON.stringify(mintNumber))
     urlFixer()
     form.setAttribute("action", prefixName + uriName)
@@ -70,7 +70,7 @@ function handleUri(event){
     uriName = event.target.value
     localStorage.setItem('uriName', JSON.stringify(uriName))
     urlFixer()
-    enableButton(uriName)
+    enableButton()
     
 }
 
@@ -87,23 +87,22 @@ function handleNumberInput(event) {
 
     counterText.textContent = mintNumber;
     urlFixer()
-    enableButton(mintNumber)
+    enableButton()
     
 }
 
-//function to make code more consise because I need to have this info ready to use in any order that the user presses the inputs. 
+
 function urlFixer(){
-    //this makes sure we use the original uri and not the uri version that changes everytime this function runs.
     if('uriName' in localStorage){
         uriName = JSON.parse(localStorage.getItem('uriName'))
     } else {
-        uriName = unchangedUri 
+        uriName = unchangedUri //makes sure we use original uri each time I replace()
     }
 
-    if(prefixName === `https://cloudflare-ipfs.com/` && unchangedUri !== ''){
+    if(prefixName === `https://cloudflare-ipfs.com/`){
         uriName = uriName.replace(/:./, '')
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
-    } else if(prefixName === `https://piniata.com/` && unchangedUri !== '') {
+    } else if(prefixName === `https://piniata.com/`) {
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json') 
     } else {
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
