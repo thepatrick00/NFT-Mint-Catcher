@@ -68,15 +68,25 @@ ul {
 
 }
 .middle__uri--top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0 .5rem;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    max-width: 600px;
 }
-#counter {
+.prefix-label {
+    grid-column: span 3;
+}
+.uri-label {
+    grid-column: span 9;
+}
+.uriNumber-label {
+    grid-column: span 4;
+    padding-left: 10px;
+}
+#counterText {
     font-family: Montserrat, 'san-serif';
     letter-spacing: 1px;
-    margin-left: .5em;
+    margin: 0;
+    grid-column: span 1;
 }
 .middle__uri--middle {
     display: flex;
@@ -86,7 +96,7 @@ ul {
     font-size: 1.3rem;
     font-family: Montserrat;
 }
-input#uriNumber {
+#uriNumber {
     width: 100px;
 }
 .warning-text {
@@ -103,4 +113,34 @@ input#uriNumber {
 .wrapper__bottom {
     display: flex;
     
+}
+
+/* start of aside */
+.aside--left{
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    border: 2px solid hsl(0, 0%, 80%);
+    padding: 1em;
+    border-radius: 9px;
+}
+.aside li {
+    line-height: 2em;
+}
+a {
+    color: #ff5656;
+
+}
+.aside--right {
+    position: absolute;
+    top: 35%;
+    right: 5%;
+    border: 2px solid hsl(0, 0%, 80%);
+    padding: 1em;
+    border-radius: 9px;
+    max-width: 300px;
+}
+.aside--right li {
+    /* overflow:auto; */
+    word-wrap:break-word;
 }

@@ -13,9 +13,27 @@
 </head>
 <body>
     <main class="wrapper">
+        <aside class="aside aside--left">
+            <h2>Important Info</h2>
+            <ul>
+                <li><a href="https://looksmutable.com/">https://looksmutable.com/</a></li>
+                <li><a href="https://www.google.com/search?q=eth+to+usd+converter&rlz=1C1CHBF_enUS926US926&ei=8PcHYsvTGaquptQP6OOCsAc&oq=eth+to+usd+&gs_lcp=Cgdnd3Mtd2l6EAEYADIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEEcQsAM6BwgAELADEEM6EgguEMcBENEDEMgDELADEEMYAEoECEEYAEoECEYYAFDWBFjWBGDuCWgBcAF4AIABygGIAcoBkgEDMi0xmAEAoAEByAEMwAEB2gEECAAYCA&sclient=gws-wiz">Eth to USD</a></li>
+                <li><a href="https://rameerez.com/problems-and-technical-nuances-of-nft-immutability-and-ipfs/">Great article on metadata</a></li>
+            </ul>
+        </aside>
+        <aside class="aside--right">
+            <h2>Gateways</h2>
+            <ul>
+                <li>https://gateway.pinata.cloud/ipfs/QmQh36CsceXZoqS7v9YQLUyxXdRmWd8YWTBUz7WCXsiVty/1000</li>
+                <li>ipfs.moralis.io</li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </aside>
         <div class="wrapper__top">
             <ul class="menu">
-                <a href="https://opensea.io/rankings?chain=matic" target="_blank"><img class="menu__logo" src="./images/opensea.png"></a>
+                <a href="https://opensea.io/rankings?chain=matic&sortBy=one_day_volume" target="_blank"><img class="menu__logo" src="./images/opensea.png"></a>
                 <li><a href="https://rarity.tools/upcoming" target="_blank">Find New Projects</a></li>
                 <li><a href="" target="_blank">Live Scanner</a></li>
                 <li><a href="" target="_blank">More</a></li>
@@ -26,10 +44,9 @@
         <div class="wrapper__middle">
             <div class="middle__uri">
                 <div class="middle__uri--top">
-                    <label class="prefix-label" for="prefix">Prefix</label>
+                    <label class="prefix-label" for="presfix">Prefix</label>
                     <label class="uri-label" for="uri">Uri</label>
-                    <div></div>
-                    <p> Starting #</p>
+                    <label class="uriNumber-label" for="uriNumber">Mint#</label>
                     <h2 id="counterText"></h2>
                 </div>
 
@@ -37,7 +54,7 @@
                     <!-- 1 -->
                     <select name="prefix" id="prefix">
                         <option value="https://cloudflare-ipfs.com/">Cloudflare</option>
-                        <option value="https://piniata.com/">Piniata</option>
+                        <option value=" https://gateway.pinata.cloud/">Pinata</option>
                         <option value="">None</option>
                     </select>
                     <!-- 2 -->

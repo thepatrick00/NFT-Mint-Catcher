@@ -38,6 +38,7 @@ if ('prefixName' in localStorage){
 if ('prefixIndex' in localStorage){
     prefixIndex = Number(JSON.parse(localStorage.getItem('prefixIndex')))
 }
+
 prefixEl.selectedIndex = prefixIndex
 
 prefixEl.addEventListener('change', handlePrefix)
@@ -105,9 +106,14 @@ function urlFixer(){
     } else if(prefixName === `https://piniata.com/`) {
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json') 
     } else {
-        uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
+        if(uriName.match(/\d+.json$/)){
+            uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
+        } else if (uriName.match(/\d+$/)){
+            uriName = uriName.replace(/\d+$/, mintNumber)
+        }
     }
-    uriTextEl.innerHTML = `<p>New URL = ${prefixName}${uriName}</p>` //exactly the same thing that is 'displayed' when I search with form action attribute
+    
+    uriTextEl.innerHTML = `<p>Live URL = ${prefixName}${uriName}</p>` //exactly the same thing that is 'displayed' when I search with form action attribute
 }
 urlFixer();
 
@@ -129,3 +135,5 @@ function enableButton() {
     }
 }
 enableButton()
+showWarningMessage()
+urlFixer()
