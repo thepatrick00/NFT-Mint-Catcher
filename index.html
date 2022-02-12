@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>NFT Mint Checker</title>
+    <link rel="icon" href="./images/favicon.png">
+</head>
+<body>
+    <main class="wrapper">
+        <div class="wrapper__top">
+            <ul class="menu">
+                <a href="https://opensea.io/rankings?chain=matic" target="_blank"><img class="menu__logo" src="./images/opensea.png"></a>
+                <li><a href="https://rarity.tools/upcoming" target="_blank">Find New Projects</a></li>
+                <li><a href="" target="_blank">Live Scanner</a></li>
+                <li><a href="" target="_blank">More</a></li>
+            </ul>
+            <img class="logo" src="./images/logo.svg" alt="logo">
+        </div>
+
+        <div class="wrapper__middle">
+            <div class="middle__uri">
+                <div class="middle__uri--top">
+                    <label class="prefix-label" for="prefix">Prefix</label>
+                    <label class="uri-label" for="uri">Uri</label>
+                    <div></div>
+                    <p> Starting #</p>
+                    <h2 id="counterText"></h2>
+                </div>
+
+                <div class="middle__uri--middle">
+                    <!-- 1 -->
+                    <select name="prefix" id="prefix">
+                        <option value="https://cloudflare-ipfs.com/">Cloudflare</option>
+                        <option value="https://piniata.com/">Piniata</option>
+                        <option value="">None</option>
+                    </select>
+                    <!-- 2 -->
+                    <input id="uri" type="text" placeholder="uri">
+                    <!-- 3 -->
+                    <input id="uriNumber" type="number" placeholder="#">
+                    <!-- 4 -->
+                    <form id="form" target="_blank">
+                        <button disabled="disabled" class='btn' type="submit">Search</button>
+                    </form>
+
+                </div>
+                <div class="middle__uri--bottom">
+                    <p class="warning-text">Cloudflare prefix is autoformated. Auto removes ':/' and auto adds correct number.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper__bottom">
+            <p id="uri-text"></p>
+        </div>
+        
+
+
+
+    </main>
+    
+    <!-- every time we click the button the link will change by one -->
+    <script src="index.js"></script>
+</body>
+</html>
