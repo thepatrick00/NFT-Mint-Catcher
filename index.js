@@ -20,11 +20,11 @@ let mintNumber = 1;
 //SEARCH BUTTON -- 1. Set correct url path, 2.increment mintNumber, 3.Set all local storage on button click because
 button.addEventListener('click', handleButton)
 function handleButton() {
-    counterText.textContent = mintNumber;
+    form.setAttribute("action", prefixName + uriName)
     mintNumber++
+    counterText.textContent = mintNumber;
     localStorage.setItem('mintNumber', JSON.stringify(mintNumber))
     urlFixer()
-    form.setAttribute("action", prefixName + uriName)
 }   
 
 
@@ -107,10 +107,9 @@ function urlFixer(){
     } else {
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
     }
-    uriTextEl.innerHTML = `<p>New URL = ${prefixName}${uriName}</p>`
+    uriTextEl.innerHTML = `<p>New URL = ${prefixName}${uriName}</p>` //exactly the same thing that is 'displayed' when I search with form action attribute
 }
 urlFixer();
-// uriTextEl.innerHTML = `<p>New URL = ${prefixName}${uriName}</p>`
 
 
 const warningTextEl = document.querySelector('.warning-text')
