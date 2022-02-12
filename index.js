@@ -1,8 +1,9 @@
 // if it is a DOM Element I will always end the variable with 'El'
 // localStorage.clear();
-console.log(JSON.parse(localStorage.getItem('prefixIndex')))
-console.log(JSON.parse(localStorage.getItem('uriName')))
-console.log(JSON.parse(localStorage.getItem('mintNumber')))
+console.log('prefixName',JSON.parse(localStorage.getItem('prefixName')))
+console.log('prefixIndex',JSON.parse(localStorage.getItem('prefixIndex')))
+console.log('uriName',JSON.parse(localStorage.getItem('uriName')))
+console.log('mintNumber',JSON.parse(localStorage.getItem('mintNumber')))
 
 const button = document.querySelector('.btn')
 const form = document.getElementById('form')
@@ -30,22 +31,23 @@ function handleButton() {
 //PREFIX Dropdown -- 1. select prefix <select>, 2. add event listener to prefix and use event, 3.Put this prefix value in a variable to use in search.
 const prefixEl = document.getElementById('prefix')
 let prefixName = `https://cloudflare-ipfs.com/`
-let prefixIndex = 0;
+let prefixIndex = 0
+if ('prefixName' in localStorage){
+    prefixName = JSON.parse(localStorage.getItem('prefixName'))
+}
 if ('prefixIndex' in localStorage){
-    prefixIndex = JSON.parse(localStorage.getItem('prefixIndex'))
+    prefixIndex = Number(JSON.parse(localStorage.getItem('prefixIndex')))
 }
 prefixEl.selectedIndex = prefixIndex
 
 prefixEl.addEventListener('change', handlePrefix)
-
 function handlePrefix(event){
-    prefixName = event.target.value
-    prefixIndex = event.target.selectedIndex
-    localStorage.setItem('prefixIndex', JSON.stringify(prefixIndex))
+    prefixName = event.target[event.target.selectedIndex].value
+    localStorage.setItem('prefixName', JSON.stringify(prefixName))
+    localStorage.setItem('prefixIndex', JSON.stringify(prefixEl.selectedIndex))
     urlFixer()
     showWarningMessage()
 }
-
 
 
 //URI Input -- listens for every keychange and runs a function, that changes the uri input automatically in the backend(here) for use for the search button.
