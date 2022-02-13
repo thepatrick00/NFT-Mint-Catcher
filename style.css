@@ -178,7 +178,8 @@ a {
 }
 @media (max-width: 660px) {
     .middle__uri--top{
-
+        display: block;
+        width: 300px;
     }
     .menu li {
         display: none;
@@ -191,7 +192,21 @@ a {
     }
     .btn--main {
         display: block;
-        width: 495px;
         border-radius: 0px;
+    }
+}
+@media (max-width: 320px) {
+    .middle__uri--middle{
+        display: block;
+        max-width: 320px;
+    }
+    select,
+    input,
+    #uriNumber,
+    .btn--main {
+        width: 90%;
+    }
+    .counterText {
+        font-size: 4rem;
     }
 }
