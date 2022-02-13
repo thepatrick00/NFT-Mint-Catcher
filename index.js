@@ -7,7 +7,8 @@ console.log('mintNumber',JSON.parse(localStorage.getItem('mintNumber')))
 
 const button = document.querySelector('.btn')
 const form = document.getElementById('form')
-const counterText = document.getElementById('counterText')
+const counterText = document.getElementsByClassName('counterText')
+console.log(counterText)
 
 let mintNumber = 1;
 
@@ -15,14 +16,14 @@ let mintNumber = 1;
     if ("mintNumber" in localStorage){
         mintNumber = JSON.parse(localStorage.getItem('mintNumber'))
     }
-    counterText.textContent = mintNumber
+    counterText[0].textContent = mintNumber
 
 //SEARCH BUTTON -- 1. Set correct url path, 2.increment mintNumber, 3.Set all local storage on button click because
 button.addEventListener('click', handleButton)
 function handleButton() {
     form.setAttribute("action", prefixName + uriName)
     mintNumber++
-    counterText.textContent = mintNumber;
+    counterText[0].textContent = mintNumber;
     localStorage.setItem('mintNumber', JSON.stringify(mintNumber))
     urlFixer()
 }   
@@ -54,6 +55,7 @@ function handlePrefix(event){
 //URI Input -- listens for every keychange and runs a function, that changes the uri input automatically in the backend(here) for use for the search button.
 const uriFormEl = document.getElementById('uri')
 const uriTextEl = document.getElementById('uri-text')
+uriTextEl.classList.add('uriTextEl')
 
 uriFormEl.addEventListener('keyup', handleUri)
 let uriName = 'ipfs/QmTWewjSwE7wNPKpKHK1frmiCXXmkvsFpSx8Wk7ms1UwMC/244.json'
@@ -86,7 +88,7 @@ function handleNumberInput(event) {
     mintNumber = Number(event.target.value)
     localStorage.setItem('mintNumber', JSON.stringify(mintNumber))
 
-    counterText.textContent = mintNumber;
+    counterText[0].textContent = mintNumber;
     urlFixer()
     enableButton()
     

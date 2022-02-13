@@ -13,41 +13,20 @@
 </head>
 <body>
     <main class="wrapper">
-        <aside class="aside aside--left">
-            <h2>Important Info</h2>
-            <ul>
-                <li><a href="https://looksmutable.com/">https://looksmutable.com/</a></li>
-                <li><a href="https://www.google.com/search?q=eth+to+usd+converter&rlz=1C1CHBF_enUS926US926&ei=8PcHYsvTGaquptQP6OOCsAc&oq=eth+to+usd+&gs_lcp=Cgdnd3Mtd2l6EAEYADIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEEcQsAM6BwgAELADEEM6EgguEMcBENEDEMgDELADEEMYAEoECEEYAEoECEYYAFDWBFjWBGDuCWgBcAF4AIABygGIAcoBkgEDMi0xmAEAoAEByAEMwAEB2gEECAAYCA&sclient=gws-wiz">Eth to USD</a></li>
-                <li><a href="https://rameerez.com/problems-and-technical-nuances-of-nft-immutability-and-ipfs/">Great article on metadata</a></li>
-            </ul>
-        </aside>
-        <aside class="aside--right">
-            <h2>Gateways</h2>
-            <ul>
-                <li>https://gateway.pinata.cloud/ipfs/QmQh36CsceXZoqS7v9YQLUyxXdRmWd8YWTBUz7WCXsiVty/1000</li>
-                <li>ipfs.moralis.io</li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </aside>
         <div class="wrapper__top">
             <ul class="menu">
-                <a href="https://opensea.io/rankings?chain=matic&sortBy=one_day_volume" target="_blank"><img class="menu__logo" src="./images/opensea.png"></a>
                 <li><a href="https://rarity.tools/upcoming" target="_blank">Find New Projects</a></li>
-                <li><a href="" target="_blank">Live Scanner</a></li>
-                <li><a href="" target="_blank">More</a></li>
+                <a href="https://opensea.io/rankings?chain=matic&sortBy=one_day_volume" target="_blank"><img class="menu__logo" src="./images/opensea.png"></a>
             </ul>
-            <img class="logo" src="./images/logo.svg" alt="logo">
+            <h2 class="counterText"></h2>
         </div>
 
         <div class="wrapper__middle">
-            <div class="middle__uri">
+            <div class="wrapper__middle--labels">
                 <div class="middle__uri--top">
                     <label class="prefix-label" for="presfix">Prefix</label>
                     <label class="uri-label" for="uri">Uri</label>
                     <label class="uriNumber-label" for="uriNumber">Mint#</label>
-                    <h2 id="counterText"></h2>
                 </div>
 
                 <div class="middle__uri--middle">
@@ -63,9 +42,9 @@
                     <input id="uriNumber" type="number" placeholder="#">
                     <!-- 4 -->
                     <form id="form" target="_blank">
-                        <button disabled="disabled" class='btn' type="submit">Search</button>
+                        <button disabled="disabled" class='btn btn--main' type="submit">Search</button>
                     </form>
-
+                    
                 </div>
                 <div class="middle__uri--bottom">
                     <p class="warning-text">Cloudflare prefix is autoformated. Auto removes ':/' and auto adds correct number.</p>
@@ -76,11 +55,26 @@
         <div class="wrapper__bottom">
             <p id="uri-text"></p>
         </div>
-        
-
-
-
     </main>
+
+    <aside class="aside aside--left">
+        <h2>Important Info</h2>
+        <ul>
+            <li><a target="_blank" href="https://looksmutable.com/">https://looksmutable.com/</a></li>
+            <li><a target="_blank" href="https://www.google.com/search?q=eth+to+usd+converter&rlz=1C1CHBF_enUS926US926&ei=8PcHYsvTGaquptQP6OOCsAc&oq=eth+to+usd+&gs_lcp=Cgdnd3Mtd2l6EAEYADIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEEcQsAM6BwgAELADEEM6EgguEMcBENEDEMgDELADEEMYAEoECEEYAEoECEYYAFDWBFjWBGDuCWgBcAF4AIABygGIAcoBkgEDMi0xmAEAoAEByAEMwAEB2gEECAAYCA&sclient=gws-wiz">Eth to USD</a></li>
+            <li><a target="_blank" href="https://rameerez.com/problems-and-technical-nuances-of-nft-immutability-and-ipfs/">Great article on metadata</a></li>
+        </ul>
+    </aside>
+    <aside class="aside aside--right">
+        <h2>Gateways</h2>
+        <ul>
+            <li>https://gateway.pinata.cloud/ipfs/QmQh36CsceXZoqS7v9YQLUyxXdRmWd8YWTBUz7WCXsiVty/1000</li>
+            <li>ipfs.moralis.io</li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </aside>
     
     <!-- every time we click the button the link will change by one -->
     <script src="index.js"></script>
