@@ -37,7 +37,15 @@ select {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.btn:focus {
+.btn--clear {
+    white-space: nowrap;
+    border-radius: 10px;
+    border: 1px solid #ff5656;
+    background-color: hsla(0, 0%, 100%, 0);
+    padding: .3em 1em;
+}
+.btn:focus,
+.btn:hover {
     background: linear-gradient(to right, blue, #3db5eb);
     border: none;
 }

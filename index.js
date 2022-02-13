@@ -140,6 +140,16 @@ function enableButton() {
         button.setAttribute('disabled', '')
     }
 }
+
+document.querySelector('.btn--clear').addEventListener('click', () => {
+    mintNumber = '';
+    prefixName = `https://cloudflare-ipfs.com/`
+    prefixIndex = 0
+    uriName = ''
+    localStorage.clear()
+    window.location.reload()
+})
+
 enableButton()
 showWarningMessage()
 urlFixer()
