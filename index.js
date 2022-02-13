@@ -129,7 +129,7 @@ function showWarningMessage(){
     if(prefixName === `https://cloudflare-ipfs.com/`){
         warningTextEl.textContent = `Cloudflare prefix is autoformated. Auto removes ':/' and auto adds correct number.`
     } else {
-        warningTextEl.textContent =''
+        warningTextEl.textContent ='None requires the ending of a number for dynamic number incrementation'
     }
 }
 
