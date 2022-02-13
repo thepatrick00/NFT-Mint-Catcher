@@ -1,5 +1,5 @@
 // if it is a DOM Element I will always end the variable with 'El'
-// localStorage.clear();
+// localStorage.clear()
 console.log('prefixName',JSON.parse(localStorage.getItem('prefixName')))
 console.log('prefixIndex',JSON.parse(localStorage.getItem('prefixIndex')))
 console.log('uriName',JSON.parse(localStorage.getItem('uriName')))
@@ -10,7 +10,7 @@ const form = document.getElementById('form')
 const counterText = document.getElementsByClassName('counterText')
 console.log(counterText)
 
-let mintNumber = 1;
+let mintNumber = '';
 
 let haveMintNumber = false;
 let haveUri = false;
@@ -45,7 +45,7 @@ if ('prefixIndex' in localStorage){
 
 prefixEl.selectedIndex = prefixIndex
 
-prefixEl.addEventListener('change', handlePrefix)
+prefixEl.addEventListener('click', handlePrefix)
 function handlePrefix(event){
     prefixName = event.target[event.target.selectedIndex].value
     localStorage.setItem('prefixName', JSON.stringify(prefixName))
@@ -61,7 +61,7 @@ const uriTextEl = document.getElementById('uri-text')
 uriTextEl.classList.add('uriTextEl')
 
 uriFormEl.addEventListener('keyup', handleUri)
-let uriName = 'ipfs/QmTWewjSwE7wNPKpKHK1frmiCXXmkvsFpSx8Wk7ms1UwMC/244.json'
+let uriName = ''
 let unchangedUri = '';
 
 if("uriName" in localStorage){
