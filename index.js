@@ -12,9 +12,12 @@ console.log(counterText)
 
 let mintNumber = 1;
 
+let haveMintNumber = false;
+let haveUri = false;
 //if mintNumber is in local storage than all other's are too because enableButton() ensures that. I call function this at the very end so there are not initialization issues.
     if ("mintNumber" in localStorage){
         mintNumber = JSON.parse(localStorage.getItem('mintNumber'))
+        haveMintNumber = true;
     }
     counterText[0].textContent = mintNumber
 
@@ -63,7 +66,8 @@ let unchangedUri = '';
 
 if("uriName" in localStorage){
     uriName = JSON.parse(localStorage.getItem('uriName'));
-    urlFixer()
+    haveUri = true;
+    urlFixer();
 }
 
 uriFormEl.setAttribute('value', uriName)
@@ -130,7 +134,7 @@ function showWarningMessage(){
 }
 
 function enableButton() {
-    if(mintNumber && uriName){
+    if(mintNumber && uriName || haveMintNumber && haveUri){
         button.removeAttribute('disabled')
     } else {
         button.setAttribute('disabled', '')
