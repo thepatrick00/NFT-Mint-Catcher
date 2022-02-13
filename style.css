@@ -209,4 +209,7 @@ a {
     .counterText {
         font-size: 4rem;
     }
+    .wrapper__bottom {
+        padding-bottom: 20%;
+    }
 }

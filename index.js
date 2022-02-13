@@ -115,7 +115,7 @@ function urlFixer(){
         }
     }
     
-    uriTextEl.innerHTML = `<p>Live URL = ${prefixName}${uriName}</p>` //exactly the same thing that is 'displayed' when I search with form action attribute
+    uriTextEl.innerHTML = `Live URL = ${prefixName}${uriName}` //exactly the same thing that is 'displayed' when I search with form action attribute
 }
 urlFixer();
 
