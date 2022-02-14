@@ -46,6 +46,7 @@ if ('prefixIndex' in localStorage){
 prefixEl.selectedIndex = prefixIndex
 
 prefixEl.addEventListener('click', handlePrefix)
+prefixEl.addEventListener('touchend', handlePrefix)
 function handlePrefix(event){
     prefixName = event.target[event.target.selectedIndex].value
     localStorage.setItem('prefixName', JSON.stringify(prefixName))
@@ -61,6 +62,7 @@ const uriTextEl = document.getElementById('uri-text')
 uriTextEl.classList.add('uriTextEl')
 
 uriFormEl.addEventListener('keyup', handleUri)
+uriFormEl.addEventListener('paste', handleUri) //for mobile
 let uriName = ''
 let unchangedUri = '';
 

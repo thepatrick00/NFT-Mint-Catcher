@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+:root {
+    --main-clr : #2081e2;
+}
 body {
     margin: 0; 
     font-family: Montserrat, 'san-serif';
@@ -27,7 +30,7 @@ select {
 }
 
 .btn {
-    background-color: #ff5656;
+    background-color: var(--main-clr);
     color: ghostwhite;
     padding: .6em 2em ;
     border: none;
@@ -40,7 +43,7 @@ select {
 .btn--clear {
     white-space: nowrap;
     border-radius: 10px;
-    border: 1px solid #ff5656;
+    border: 1px solid var(--main-clr);
     background-color: hsla(0, 0%, 100%, 0);
     padding: .3em 1em;
 }
@@ -55,6 +58,7 @@ select {
 .wrapper__top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .logo {
     width: 200px;
@@ -84,8 +88,9 @@ ul {
 .middle__uri {
 
 }
-.wrapper__middle--labels {
-    position: relative;
+.wrapper__middle--box {
+    display: flex;
+    flex-direction: column;
 }
 /* START OF LABELS */
 .middle__uri--top {
@@ -124,7 +129,7 @@ ul {
     width: 100px;
 }
 .warning-text {
-    color: #ff5656;
+    color: var(--main-clr);
     color: hsl(0, 0%, 90%);
     line-height: 2;
     font-weight: 400;
@@ -154,7 +159,7 @@ ul {
     margin-left: 1em;
 }
 a {
-    color: #ff5656;
+    color: var(--main-clr);
 
 }
 .aside--right {
@@ -174,7 +179,9 @@ a {
     width: 100%;
     word-wrap: break-word;
 }
-
+.uriTextEl {
+    color: orange;
+}
 @media (max-width: 1428px) {
     .aside--right,
     .aside--left {
@@ -182,10 +189,13 @@ a {
         display: block;
         max-width: 90%;
         margin: 0 auto;
-        margin-bottom: 3rem;
+        margin-top: 10rem;
     }
 }
 @media (max-width: 660px) {
+    .aside {
+        display: none;
+    }
     .middle__uri--top{
         display: block;
         width: 300px;
@@ -204,21 +214,34 @@ a {
         border-radius: 0px;
     }
 }
-@media (max-width: 320px) {
+@media (max-width: 600px) {
     .middle__uri--middle{
-        display: block;
-        max-width: 320px;
+        display: flex;
     }
     select,
     input,
     #uriNumber,
-    .btn--main {
+    .btn--main,
+    #form {
         width: 90%;
     }
     .counterText {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     .wrapper {
         height: 85vh;
+    }
+    .wrapper__bottom{
+        display: block;
+        order: 0;
+    }
+    .btn--clear{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+    .wrapper__middle {
+        order: 1;
     }
 }
