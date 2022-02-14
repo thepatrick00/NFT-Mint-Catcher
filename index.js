@@ -63,6 +63,7 @@ uriTextEl.classList.add('uriTextEl')
 
 uriFormEl.addEventListener('keyup', handleUri)
 uriFormEl.addEventListener('change', handleUri)
+uriFormEl.addEventListener('paste', handleUri)
 let uriName = ''
 let unchangedUri = '';
 
