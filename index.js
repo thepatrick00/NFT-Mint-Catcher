@@ -5,7 +5,7 @@ console.log('prefixIndex',JSON.parse(localStorage.getItem('prefixIndex')))
 console.log('uriName',JSON.parse(localStorage.getItem('uriName')))
 console.log('mintNumber',JSON.parse(localStorage.getItem('mintNumber')))
 
-const button = document.querySelector('.btn')
+const button = document.querySelector('.btn--main')
 const form = document.getElementById('form')
 const counterText = document.getElementsByClassName('counterText')
 console.log(counterText)
@@ -77,8 +77,6 @@ function handleUri(event){
     uriName = event.target.value
     localStorage.setItem('uriName', JSON.stringify(uriName))
     urlFixer()
-    enableButton()
-    
 }
 
 //STARTING NUBMER INPUT -- 1.select number input, 2.addEventListener for keyup so we can use access event data, 3.Each time there is a change clear local storage and set new local storage (only allow numbers), 4. Update new mintNumber on page
@@ -94,7 +92,7 @@ function handleNumberInput(event) {
 
     counterText[0].textContent = mintNumber;
     urlFixer()
-    enableButton()
+    showWarningMessage()
     
 }
 
@@ -127,19 +125,21 @@ urlFixer();
 const warningTextEl = document.querySelector('.warning-text')
 function showWarningMessage(){
     if(prefixName === `https://cloudflare-ipfs.com/`){
-        warningTextEl.textContent = `Cloudflare prefix is autoformated. Auto removes ':/' and auto adds correct number.`
+        warningTextEl.innerHTML = `The url will be autoformated. <b>":/" will be removed</b> from the start of the URi. The url <b>needs to end in a "number.json"</b> for the Mint# ${mintNumber} to work and increment +1 with each search`
     } else {
-        warningTextEl.textContent ='None requires the ending of a number for dynamic number incrementation'
+        warningTextEl.innerHTML =`The url <b>needs to strictly end with a digit</b> for the Mint# ${mintNumber} to work and increment +1 with each search`
     }
 }
 
-function enableButton() {
-    if(mintNumber && uriName || haveMintNumber && haveUri){
-        button.removeAttribute('disabled')
-    } else {
-        button.setAttribute('disabled', '')
-    }
-}
+// function enableButton() {
+//     if(mintNumber && uriName || haveMintNumber && haveUri){
+//         button.removeAttribute('disabled')
+//         button.textContent = `Search +1 Mint`
+//     } else {
+//         button.setAttribute('disabled', '')
+//         button.textContent = `Missing uri or #`
+//     }
+// }
 
 document.querySelector('.btn--clear').addEventListener('click', () => {
     mintNumber = '';
@@ -150,6 +150,5 @@ document.querySelector('.btn--clear').addEventListener('click', () => {
     window.location.reload()
 })
 
-enableButton()
 showWarningMessage()
 urlFixer()
