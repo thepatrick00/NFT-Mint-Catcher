@@ -110,8 +110,6 @@ function urlFixer(){
     if(prefixName === `https://cloudflare-ipfs.com/`){
         uriName = uriName.replace(/:./, '')
         uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
-    } else if(prefixName === `https://piniata.com/`) {
-        uriName = uriName.replace(/\d+.json$/, mintNumber+'.json') 
     } else {
         if(uriName.match(/\d+.json$/)){
             uriName = uriName.replace(/\d+.json$/, mintNumber+'.json')
@@ -130,7 +128,7 @@ function showWarningMessage(){
     if(prefixName === `https://cloudflare-ipfs.com/`){
         warningTextEl.innerHTML = `The url will be autoformated. <b>":/" will be removed</b> from the start of the URi. The url <b>needs to end in a "number.json"</b> for the Mint# ${mintNumber} to work and increment +1 with each search`
     } else {
-        warningTextEl.innerHTML =`The url <b>needs to strictly end with a digit</b> for the Mint# ${mintNumber} to work and increment +1 with each search`
+        warningTextEl.innerHTML =`The url <b>needs to strictly end with a digit or digit.json</b> for the Mint# ${mintNumber} to work and increment +1 with each search`
     }
 }
 
@@ -155,3 +153,23 @@ document.querySelector('.btn--clear').addEventListener('click', () => {
 
 showWarningMessage()
 urlFixer()
+
+//ADD YOUR OWN LINKS SECTION
+
+const textarea = document.querySelector('.textarea')
+const textareaBtn = document.querySelector('.btn--comment')
+const linkList = document.querySelector('.link-list')
+let textareaValue = ''
+let linkName = textareaValue.match(/https:\/\//ig)
+
+
+textarea.addEventListener('keyup', function(e){
+    textareaValue = e.target.value
+    console.log(textareaValue, linkName)
+})
+
+textareaBtn.addEventListener('click', function(){
+    const li = document.createElement('li')
+    li.innerHTML = `<a target="_blank" href=${textareaValue}>Link 1</a>`
+    linkList.appendChild(li)
+})
