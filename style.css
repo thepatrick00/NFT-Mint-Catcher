@@ -5,6 +5,9 @@
     --main-clr : #2081e2;
     --accent-clr : orange;
 }
+a {
+    color: var(--main-clr);
+}
 a:hover {
     background: linear-gradient(to right, blue, #267fa8);
     color: var(--accent-clr);
@@ -164,10 +167,6 @@ ul {
     line-height: 2em;
     margin-left: 1em;
 }
-a {
-    color: var(--main-clr);
-
-}
 .aside--right {
     position: absolute;
     top: 35%;
@@ -204,6 +203,12 @@ a {
     top: 0;
     right: 0;
     padding: 6px 1em;
+}
+.quick-links {
+    
+}
+.delete-link {
+    
 }
 /* end off, add your own link textarea + button */
 

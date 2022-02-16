@@ -1,14 +1,18 @@
 // if it is a DOM Element I will always end the variable with 'El'
+
+
+
 // localStorage.clear()
 console.log('prefixName',JSON.parse(localStorage.getItem('prefixName')))
 console.log('prefixIndex',JSON.parse(localStorage.getItem('prefixIndex')))
 console.log('uriName',JSON.parse(localStorage.getItem('uriName')))
 console.log('mintNumber',JSON.parse(localStorage.getItem('mintNumber')))
+console.log('linkArr',JSON.parse(localStorage.getItem('linkArr')))
 
 const button = document.querySelector('.btn--main')
 const form = document.getElementById('form')
 const counterText = document.getElementsByClassName('counterText')
-console.log(counterText)
+console.log('counter text', counterText)
 
 let mintNumber = '';
 
@@ -155,21 +159,41 @@ showWarningMessage()
 urlFixer()
 
 //ADD YOUR OWN LINKS SECTION
-
-const textarea = document.querySelector('.textarea')
+const textareaCtr = document.querySelector('.textarea-container')
+let textarea = document.querySelector('.textarea')
 const textareaBtn = document.querySelector('.btn--comment')
 const linkList = document.querySelector('.link-list')
 let textareaValue = ''
-let linkName = textareaValue.match(/https:\/\//ig)
 
+let linkArr = []
+if ('linkArr' in localStorage){
+    linkArr = JSON.parse(localStorage.getItem('linkArr'))
+}
+//CREATE <li> ELEMENT FOR EACH LINK//
+function createList() {
 
+    linkArr.map(link => {
+        const li = document.createElement('li')
+        li.innerHTML = `<a class="quick-links" target="_blank" href=${link}>${link.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
+        li.appendChild(span)
+        linkList.appendChild(li)
+
+    })
+}
+createList()
+//TEXT AREA INPUT//
 textarea.addEventListener('keyup', function(e){
     textareaValue = e.target.value
-    console.log(textareaValue, linkName)
+    console.log(linkArr)
 })
-
+//SUBMIT BUTTON//
 textareaBtn.addEventListener('click', function(){
     const li = document.createElement('li')
-    li.innerHTML = `<a target="_blank" href=${textareaValue}>Link 1</a>`
+    li.innerHTML = `<a class="quick-links" target="_blank" href=${textareaValue}>${textareaValue.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
     linkList.appendChild(li)
+    linkArr.push(textareaValue)
+    localStorage.setItem('linkArr', JSON.stringify(linkArr))
+    textareaCtr.reset()
 })
+
+//have an array of values that I can map through. These values are in the array that is stored in local storage so I can use them any time.
