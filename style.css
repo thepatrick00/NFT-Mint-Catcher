@@ -204,13 +204,27 @@ ul {
     right: 0;
     padding: 6px 1em;
 }
-.quick-links {
-    
-}
-.delete-link {
-    
-}
 /* end off, add your own link textarea + button */
+
+
+/* list styles to make delete emoji appear on hover */
+.link-list {
+    list-style: none;
+}
+.link-list li {
+    margin-left: -21px;
+}
+.link-list li:hover span{
+    opacity: 1;
+}
+.XEmoji {
+    opacity: 0;
+}
+.XEmoji:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
 
 
 @media (max-width: 780px){

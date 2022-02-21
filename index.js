@@ -158,7 +158,8 @@ document.querySelector('.btn--clear').addEventListener('click', () => {
 showWarningMessage()
 urlFixer()
 
-//ADD YOUR OWN LINKS SECTION
+/*ADD YOUR OWN QUICK LINKS SECTION*/
+/*********************************/
 const textareaCtr = document.querySelector('.textarea-container')
 let textarea = document.querySelector('.textarea')
 const textareaBtn = document.querySelector('.btn--comment')
@@ -171,29 +172,59 @@ if ('linkArr' in localStorage){
 }
 //CREATE <li> ELEMENT FOR EACH LINK//
 function createList() {
-
     linkArr.map(link => {
         const li = document.createElement('li')
-        li.innerHTML = `<a class="quick-links" target="_blank" href=${link}>${link.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
-        li.appendChild(span)
+        li.innerHTML = `<span class="XEmoji">❌</span>` + " " + `<a class="quick-links" target="_blank" href=${link}>${link.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
         linkList.appendChild(li)
-
     })
 }
 createList()
-//TEXT AREA INPUT//
+
+//TEXT AREA INPUT captures textarea value//
 textarea.addEventListener('keyup', function(e){
     textareaValue = e.target.value
-    console.log(linkArr)
 })
-//SUBMIT BUTTON//
+
+//SUBMIT BUTTON also creates li items and saves them to local storage//
 textareaBtn.addEventListener('click', function(){
+
     const li = document.createElement('li')
-    li.innerHTML = `<a class="quick-links" target="_blank" href=${textareaValue}>${textareaValue.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
+    li.innerHTML = `<span class="XEmoji">❌</span>`+ " " + `<a class="quick-links" target="_blank" href=${textareaValue}>${textareaValue.replace(/https:../, '').replace(/\/.*/ig, '')}</a>`
     linkList.appendChild(li)
+
     linkArr.push(textareaValue)
     localStorage.setItem('linkArr', JSON.stringify(linkArr))
     textareaCtr.reset()
 })
 
 //have an array of values that I can map through. These values are in the array that is stored in local storage so I can use them any time.
+
+/* Give the ability to delete links from list. I'm using event delegation by adding an event listener to the <ul>. This way with 1 event listener I control all <li>'s with event.target  */
+linkList.addEventListener('dblclick', deleteLink)
+
+/* always select the closest link even when your event.target is on <a> or <li> because .closest makes it move up the DOM tree. Then I remove from the DOM and use a callback function to remove it from localStorage. */
+function deleteLink(e) {
+    let link = e.target.closest('li');
+    let linkText = link.textContent.slice(2)
+
+    if(e.target.textContent === '❌'){
+        removeLinkFromLocalStorage(linkText);
+        link.remove();
+    } else {
+        return;
+    }
+}
+
+/* The linkText variable is textContent from the event.target before. This has to be exactly equal to the replaced link value we use. This way I can remove it from the original linkArr and set a new localStorage */
+function removeLinkFromLocalStorage(linkText){
+    for (let i=0; i < linkArr.length; i++){
+        let replacedLink = linkArr[i].replace(/https:../, '').replace(/\/.*/ig, '')
+
+        if(linkText === replacedLink){
+            linkArr.splice(i, 1)
+            localStorage.setItem('linkArr', JSON.stringify(linkArr))
+            console.log(linkArr[i],'found and removed from array and localStoarge')
+            return;
+        }
+    }
+}
